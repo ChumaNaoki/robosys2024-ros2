@@ -28,7 +28,7 @@ def log_combined(): #受信データ出力
     # 両データが変化したことを確認
     if current_shape is not None and current_angle_sum is not None:
         if current_shape != last_output_shape and current_angle_sum != last_output_angle_sum:
-            node.get_logger().info(f"{current_shape}角形の内角の和は: {current_angle_sum}")
+            node.get_logger().info(f"{current_shape}角形の内角の和は: {current_angle_sum}°")
             last_output_shape = current_shape
             last_output_angle_sum = current_angle_sum
 

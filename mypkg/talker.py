@@ -12,7 +12,8 @@ def cb():
     msg = Int16()
     msg.data = n
     pub.publish(msg)
-    n += 1
+    n += 2
+    n *= 2 #listenerに渡す数値の操作
 
 def main():
     node.create_timer(0.5, cb)

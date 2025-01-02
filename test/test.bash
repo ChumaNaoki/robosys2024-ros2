@@ -4,12 +4,12 @@ dir=~
 [ "$1" != "" ] && dir="$1"
 
 cd $dir/ros2_ws
-source /root/ros2_ws/src/setup.bash
 rm -rf build install log
 colcon build --packages-select mypkg
 colcon build
 source install/setup.bash
 source $dir/.bashrc
+source /root/ros2_ws/src/setup.bash
 ls /root/ros2_ws/src/mypkg
 timeout 10 ros2 launch mypkg talk_listen.launch.py > /tmp/mypkg.log
 cat /tmp/mypkg.log |

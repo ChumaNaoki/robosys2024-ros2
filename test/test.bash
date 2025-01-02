@@ -9,5 +9,5 @@ colcon build --packages-select mypkg
 colcon build
 source $dir/.bashrc
 ls /root/ros2_ws/src/mypkg
-timeout 10 ros2 launch mypkg talk_listen.launch.py > /tmp/mypkg.log
+timeout 9 ros2 launch mypkg talk_listen.launch.py > /tmp/mypkg.log
 cat /tmp/mypkg.log | grep '3角形の内角の和は: 180°'

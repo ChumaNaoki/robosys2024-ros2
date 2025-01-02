@@ -16,5 +16,5 @@ def publish_shape_info():
     n += 1
 
 def main():
-    node.create_timer(0.5, publish_shape_info)
+    node.create_timer(1, publish_shape_info)
     rclpy.spin(node)

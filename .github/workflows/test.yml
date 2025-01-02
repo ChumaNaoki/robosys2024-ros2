@@ -20,8 +20,10 @@ jobs:
             python3-colcon-common-extensions \
             git \
             build-essential \
-            python3-pip \
-            vcstool  # vcstoolをインストール
+            python3-pip
+
+          # vcstoolを手動でインストール
+          sudo apt install -y python3-vcstool
 
           # ROS 2 Humbleのセットアップ
           curl -sSL https://raw.githubusercontent.com/ros2/ros2/master/ros2.repos | vcs import --recursive /root/ros2_ws/src

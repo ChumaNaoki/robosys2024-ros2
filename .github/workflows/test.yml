@@ -9,19 +9,30 @@ jobs:
 
       - name: Set up ROS 2 environment
         run: |
-          # ROS 2 Humbleのセットアップ
+          # 必要なパッケージをインストール
           sudo apt update
           sudo apt install -y \
             curl \
             gnupg2 \
             lsb-release \
             sudo \
-            ca-certificates
+            ca-certificates \
+            python3-colcon-common-extensions \
+            vcs \
+            git \
+            build-essential \
+            python3-pip
 
-          # ROS 2 Humbleのインストール
+          # ROS 2 Humbleのセットアップ
           curl -sSL https://raw.githubusercontent.com/ros2/ros2/master/ros2.repos | vcs import --recursive /root/ros2_ws/src
           cd /root/ros2_ws
-          # ROS 2 の依存関係をインストール
+
+          # 必要なPythonパッケージをインストール
+          python3 -m pip install -U \
+            setuptools \
+            colcon-common-extensions
+
+          # ROS 2の依存関係をインストール
           rosdep update
           rosdep install --from-paths src --ignore-src -r -y
 

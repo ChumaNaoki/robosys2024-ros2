@@ -5,6 +5,7 @@ dir=~
 
 cd $dir/ros2_ws
 rm -rf build install log
+unset COLCON_PYTHON_EXECUTABLE
 colcon build --packages-select mypkg
 colcon build
 source $dir/.bashrc

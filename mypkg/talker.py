@@ -1,20 +1,32 @@
 import rclpy
 from rclpy.node import Node
-from custom_msgs.msg import ShapeInfo
+from std_msgs.msg import Int16
 
 rclpy.init()
 node = Node("talker")
-pub = node.create_publisher(ShapeInfo, "shape_info", 10)
-n = 3
 
-def publish_shape_info():
+pub_countup = node.create_publisher(Int16, "countup", 10)
+pub_naikaku = node.create_publisher(Int16, "naikaku", 10)
+
+n = 0
+i = 3
+
+def cb(): #countup
+    global i
+    msg = Int16()
+    msg.data = i
+    pub_countup.publish(msg)
+
+def nakami(): #naikaku
     global n
-    msg = ShapeInfo()
-    msg.sides = n
-    msg.angle_sum = 180 * (n - 2)
-    pub.publish(msg)
-    n += 1
+    global i
+    n = 180 * (i - 2)
+    i += 1
+    msg = Int16()
+    msg.data = n
+    pub_naikaku.publish(msg)
 
 def main():
-    node.create_timer(1, publish_shape_info)
+    node.create_timer(0.5, cb)
+    node.create_timer(0.5, nakami)
     rclpy.spin(node)

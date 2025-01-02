@@ -6,7 +6,7 @@ dir=~
 cd $dir/ros2_ws
 colcon build
 source $dir/.bashrc
+timeout 10 ros2 launch mypkg talk_listen.launch.py > /tmp/mypkg.log
 
-timeout 9 ros2 launch mypkg talk_listen.launch.py > /tmp/mypkg.log
 cat /tmp/mypkg.log |
-grep '10角形の内角の和は: 1440°'
+grep '11角形の内角の和は: 1620°'

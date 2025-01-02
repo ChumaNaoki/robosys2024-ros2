@@ -3,9 +3,10 @@
 dir=~
 [ "$1" != "" ] && dir="$1"
 
-source /root/ros2_ws/src/setup.bash
-
 cd $dir/ros2_ws
+source /root/ros2_ws/src/setup.bash
+rm -rf build install log
+colcon build --packages-select mypkg
 colcon build
 source install/setup.bash
 source $dir/.bashrc

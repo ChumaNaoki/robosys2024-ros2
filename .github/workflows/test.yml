@@ -6,9 +6,36 @@ jobs:
     container: ryuichiueda/ubuntu22.04-ros2:latest
     steps:
       - uses: actions/checkout@v2
-      - name: build and test
+
+      - name: Set up ROS 2 environment
+        run: |
+          # ROS 2 Humbleのセットアップ
+          sudo apt update
+          sudo apt install -y \
+            curl \
+            gnupg2 \
+            lsb-release \
+            sudo \
+            ca-certificates
+
+          # ROS 2 Humbleのインストール
+          curl -sSL https://raw.githubusercontent.com/ros2/ros2/master/ros2.repos | vcs import --recursive /root/ros2_ws/src
+          cd /root/ros2_ws
+          # ROS 2 の依存関係をインストール
+          rosdep update
+          rosdep install --from-paths src --ignore-src -r -y
+
+      - name: Build ROS 2 workspace
+        run: |
+          cd /root/ros2_ws
+          # ROS 2ワークスペースのビルド
+          source /opt/ros/humble/setup.bash
+          colcon build
+
+      - name: Run tests
         run: |
           rsync -av ./ /root/ros2_ws/src/mypkg/
           rsync -av ./custom_msgs /root/ros2_ws/src/
           cd /root/ros2_ws
+          source install/setup.bash
           bash -xv ./src/mypkg/test/test.bash /root

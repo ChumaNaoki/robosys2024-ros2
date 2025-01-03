@@ -1,0 +1,5 @@
+[0.000000] (-) TimerEvent: {}
+[0.001084] (-) JobUnselected: {'identifier': 'custom_msgs'}
+[0.001145] (-) JobUnselected: {'identifier': 'mypkg'}
+[0.001173] (-) JobUnselected: {'identifier': 'person_msgs'}
+[0.001196] (-) EventReactorShutdown: {}

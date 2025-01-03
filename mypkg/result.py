@@ -3,7 +3,7 @@ from rclpy.node import Node
 from std_msgs.msg import Int16
 
 rclpy.init()
-node = Node("listener")
+node = Node("result")
 
 # データを保存する変数
 current_shape = None
@@ -33,7 +33,7 @@ def log_combined(): #受信データ出力
             last_output_angle_sum = current_angle_sum
 
 def main():
-    node.create_subscription(Int16, "countup", cb, 10)
+    node.create_subscription(Int16, "shape", cb, 10)
     node.create_subscription(Int16, "naikaku", nakami, 10)
     
     rclpy.spin(node)

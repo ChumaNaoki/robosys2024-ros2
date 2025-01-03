@@ -7,7 +7,7 @@ cd $dir/ros2_ws
 colcon build
 source $dir/.bashrc
 
-timeout 100 ros2 launch mypkg talk_listen.launch.py > /tmp/mypkg.log
+timeout 100 ros2 launch mypkg sum_angle_result.launch.py > /tmp/mypkg.log
 cat /tmp/mypkg.log | grep '3角形の内角の和は: 180°'
 cat /tmp/mypkg.log | grep '4角形の内角の和は: 360°'
 cat /tmp/mypkg.log | grep '3角形の内角の和は: 180°'

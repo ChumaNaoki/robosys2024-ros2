@@ -3,19 +3,19 @@ from rclpy.node import Node
 from std_msgs.msg import Int16
 
 rclpy.init()
-node = Node("talker")
+node = Node("sum_angle")
 
-pub_countup = node.create_publisher(Int16, "countup", 10)
+pub_shape = node.create_publisher(Int16, "shape", 10)
 pub_naikaku = node.create_publisher(Int16, "naikaku", 10)
 
 n = 0
 i = 3
 
-def cb(): #countup
+def cb(): #shape
     global i
     msg = Int16()
     msg.data = i
-    pub_countup.publish(msg)
+    pub_shape.publish(msg)
 
 def nakami(): #naikaku
     global n

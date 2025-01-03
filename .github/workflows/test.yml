@@ -13,6 +13,17 @@ jobs:
           rsync -av ./install /root/ros2_ws/
           rsync -av ./build /root/ros2_ws/
           rsync -av ./log /root/ros2_ws/
+      - name: Build custom_msgs
+        run: |
+          cd /root/ros2_ws
+          colcon build --packages-select custom_msgs
+          source src/mypkg/setup.bash
+
+      - name: Build mypkg
+        run: |
+          cd /root/ros2_ws
+          colcon build --packages-select mypkg
+          source src/mypkg/setup.bash
 
       - name: test
         run: |

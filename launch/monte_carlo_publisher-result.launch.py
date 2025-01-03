@@ -5,14 +5,14 @@ import launch_ros.actions
 
 def generate_launch_description():
 
-    talker = launch_ros.actions.Node(
+    monte_carlo_publisher = launch_ros.actions.Node(
             package='mypkg',
-            executable='talker',
+            executable='monte_carlo_publisher',
             )
-    listener = launch_ros.actions.Node(
+    result = launch_ros.actions.Node(
             package='mypkg',
-            executable='listener',
+            executable='result',
             output='screen'
             )
 
-    return launch.LaunchDescription([talker, listener])
+    return launch.LaunchDescription([monte_carlo_publisher, result])

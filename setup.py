@@ -23,8 +23,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
     'console_scripts': [
-        'talker = mypkg.talker:main',
-        'listener = mypkg.listener:main',
+        'monte_carlo_publisher = mypkg.monte_carlo_publisher:main',
+        'result= mypkg.result:main',
         ],
     },
 )

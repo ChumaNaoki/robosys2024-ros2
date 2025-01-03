@@ -13,8 +13,8 @@ jobs:
           rsync -av ./install /root/ros2_ws/
           rsync -av ./build /root/ros2_ws/
           rsync -av ./log /root/ros2_ws/
-          cd /root/ros2_ws
 
       - name: test
         run: |
+          cd /root/ros2_ws
           bash -xv ./src/mypkg/test/test.bash /root

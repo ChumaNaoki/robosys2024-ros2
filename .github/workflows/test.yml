@@ -6,7 +6,7 @@ jobs:
     container: ryuichiueda/ubuntu22.04-ros2:latest
     steps:
       - uses: actions/checkout@v2
-      - name: build and test
+      - name: build
         run: |
           rsync -av ./ /root/ros2_ws/src/mypkg/
           rsync -av ./custom_msgs /root/ros2_ws/src/
@@ -14,4 +14,7 @@ jobs:
           rsync -av ./build /root/ros2_ws/
           rsync -av ./log /root/ros2_ws/
           cd /root/ros2_ws
+
+      - name: test
+        run: |
           bash -xv ./src/mypkg/test/test.bash /root
